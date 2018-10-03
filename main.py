@@ -10,7 +10,7 @@ batches = [1, 2, 4, 8, 16, 32]
 
 device = "cpu"
 if torch.cuda.is_available():
-    device = "gpu"
+    device = "cuda"
 
 net = nets[0]
 
@@ -30,7 +30,7 @@ for batch in batches:
         out = net(data)
         duration = time.time() - start
         ips.update(1.0 / duration)
-        print("Iterations per second %.2f" % ips.avg)
+        # print("Iterations per second %.2f" % ips.avg)
 
     print("Batch size: %d Speed %.2f" % (batch, ips.avg))
 
